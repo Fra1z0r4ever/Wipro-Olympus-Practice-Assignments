@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spring Flowers School • Student Management</title>
+  <style>
+    :root{
+      --brand:#4f46e5; /* indigo */
+      --brand-dark:#3730a3;
+      --accent:#10b981; /* emerald */
+      --bg:#f8fafc; /* slate-50 */
+      --card:#ffffff;
+      --text:#0f172a; /* slate-900 */
+      --muted:#64748b; /* slate-500 */
+      --ring: rgba(79,70,229,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+      Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg);
+    }
+    /* HEADER */
+    header{
+      position: sticky; top:0; z-index: 10;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      color:#fff; border-bottom:1px solid rgba(255,255,255,.15);
+    }
+    .container{ max-width: 1100px; margin:0 auto; padding: 0 16px; }
+    .topbar{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .brand .logo{ width:36px; height:36px; display:grid; place-items:center; border-radius:10px; background:#fff; }
+    .brand .name{ font-weight:700; letter-spacing:.2px; }
+    nav{ display:flex; gap:8px; flex-wrap:wrap; }
+    nav a{
+      color:#fff; text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600;
+      border:1px solid rgba(255,255,255,.15);
+    }
+    nav a:hover, nav a:focus{ outline:none; background:rgba(255,255,255,.12); }
+    .cta{ background:#fff; color:var(--brand); border-color:#fff; }
+    .cta:hover{ background:#f1f5f9; }
+
+    /* HERO */
+    .hero{ padding:56px 0 28px; }
+    .card{
+      background:var(--card); border-radius:16px; box-shadow: 0 10px 30px rgba(2,8,23,.06);
+      border:1px solid #e2e8f0; padding:28px; overflow:hidden;
+    }
+    .hero h1{ margin:0 0 8px; font-size: clamp(26px, 4vw, 40px); }
+    .hero p{ margin:0; color:var(--muted); font-size:clamp(14px, 2.5vw, 18px); }
+
+    /* GRID */
+    .grid{ display:grid; gap:16px; grid-template-columns: 1fr; margin-top:16px; }
+    @media (min-width: 880px){ .grid{ grid-template-columns: 1.2fr .8fr; } }
+
+    /* PANELS */
+    .panel h2{ margin:0 0 8px; font-size:22px; }
+    .list{ display:grid; gap:10px; margin:12px 0 0; padding:0; list-style:none; }
+    .list li{ background:#f8fafc; border:1px solid #e2e8f0; padding:12px 14px; border-radius:12px; }
+
+    /* PROFILE (shown via :target) */
+    #profile{ display:none; }
+    #profile:target{ display:block; }
+    .pill{ display:inline-block; padding:4px 10px; border-radius:999px; background:rgba(16,185,129,.12); color:var(--accent); font-weight:700; font-size:12px; border:1px solid rgba(16,185,129,.25); }
+
+    /* FOOTER */
+    footer{ color:#475569; padding:28px 0 48px; text-align:center; }
+
+    /* ACCESSIBILITY FOCUS */
+    a:focus-visible { outline: 3px solid var(--ring); outline-offset:2px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#home" aria-label="Spring Flowers School Home">
+        <!-- inline SVG logo (no external asset needed) -->
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#4f46e5"/>
+                <stop offset="1" stop-color="#10b981"/>
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="22" fill="url(#g)"/>
+            <path d="M24 12l4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1z" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="name">Spring Flowers School</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#profile">Student Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="home" class="container">
+    <section class="hero card" aria-labelledby="welcome-title">
+      <h1 id="welcome-title">Welcome to the Student Management Portal</h1>
+      <p>Manage your learning journey online. Use the menu above to navigate or open your <strong>Student Profile</strong>.</p>
+    </section>
+
+    <section class="grid" aria-label="Overview">
+      <div class="panel card">
+        <h2>Quick Links</h2>
+        <ul class="list">
+          <li><a href="#profile">View Student Profile</a></li>
+          <li><a href="#about">About Spring Flowers School</a></li>
+          <li><a href="#contact">Contact & Support</a></li>
+        </ul>
+      </div>
+      <aside class="panel card">
+        <h2>School Notice</h2>
+        <p class="pill" aria-label="status">OPEN</p>
+        <p style="margin-top:8px; color:var(--muted)">Admissions for the Spring 2025 batch are now open. Orientation starts <strong>Jan 15</strong>.</p>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="card" style="margin-top:16px" aria-labelledby="about-title">
+      <h2 id="about-title">About Spring Flowers</h2>
+      <p>Spring Flowers School fosters creativity, collaboration, and curiosity. Our modern curriculum blends core academics with technology and arts.</p>
+    </section>
+
+    <!-- STUDENT PROFILE (shown when #profile is targeted) -->
+    <section id="profile" class="card" style="margin-top:16px" aria-labelledby="profile-title">
+      <h2 id="profile-title">Student Profile</h2>
+      <div style="display:grid; gap:12px; grid-template-columns: 1fr;">
+        <div style="display:grid; grid-template-columns: 72px 1fr; gap:12px; align-items:center;">
+          <div style="width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--accent)); display:grid; place-items:center; color:#fff; font-weight:800;">PS</div>
+          <div>
+            <h3 style="margin:0 0 4px;">Priyam Sarkar</h3>
+            <p style="margin:0; color:var(--muted)">B.Tech CSE (Cyber Security) • Spring Flowers School</p>
+          </div>
+        </div>
+        <div style="display:grid; gap:10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <div class="card" style="padding:14px;">
+            <strong>Roll No:</strong> SFS-2025-039
+          </div>
+          <div class="card" style="padding:14px;">
+            <strong>Email:</strong> priyam@example.com
+          </div>
+          <div class="card" style="padding:14px;">
+            <strong>Department:</strong> Computer Science (Cyber Security)
+          </div>
+          <div class="card" style="padding:14px;">
+            <strong>Skills:</strong> HTML5, CSS3, Java, Python, UI/UX, CyberSecurity
+          </div>
+        </div>
+      </div>
+      <!-- <p style="margin-top:14px; color:var(--muted)">Tip: This section appears when the URL ends with <code>#profile</code>. No JavaScript required—just HTML5 & CSS3 (<code>:target</code>).</p> -->
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" style="margin-top:16px" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact & Support</h2>
+      <p>For assistance, email <a href="mailto:support@springflowers.edu">support@springflowers.edu</a> or visit the help desk.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Spring Flowers School · Built with HTML5 & CSS3</div>
+  </footer>
+
+  <script>
+    // Non-essential: update year; no app logic required for user stories
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
